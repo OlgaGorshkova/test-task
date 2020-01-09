@@ -15,8 +15,6 @@ const salaryTypes: ISalaryType[] = [
 	{id: 4, name: 'Оплата за час'},  
 ];
 
-
-
 const App: React.FC = () => {
 	
 	const [salaryType, setSalaryType]= useState(1);
