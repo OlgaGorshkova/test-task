@@ -11,9 +11,8 @@ export const types: DictionaryItem[] = [
 ];
 
 export const View = (props: IStateProps) => {
-    const { value, onRadioChange, type, withTax, tax } = props; //type, withTax, 
-    console.log('type', type) ;
-
+    const { onRadioChange, onInputChange, salary, sumInput} = props; 
+    
     return(        
       <form>
         <div className="form-group">
@@ -26,21 +25,31 @@ export const View = (props: IStateProps) => {
                             type="radio" 
                             value={item.id}                        
                             onChange = {onRadioChange}
-                            checked={item.id === +type} />
+                            checked={item.id === salary.type} />
                         <label className="form-check-label">{item.name}</label>
                     </div>
                 )) }
                 <div className="form-group sum-group">
-                    <p> switcher {withTax ? 'on': 'off'} </p>
-                    <p> сумма input {value}</p>
+                    <p> switcher {salary.withTax ? 'on': 'off'} </p>
+                    <input
+                        className="form-contol"
+                        type="text"
+                        placeholder="Введите сумму"
+                        value={sumInput}
+                        onChange={onInputChange}
+                    />
+                    <p> сумма input {salary.sum}</p>
                 </div>               
             </div>
-            <div className="form-group info-group" >
-                <p>Плашка с информацией</p>
-                <p>на руки</p>
-                <p>ндфл {tax}</p>
-                <p>в месяц {value}</p>
-            </div>
+            { 
+                (salary.type === 1) &&
+                <div className="form-group info-group" >
+                    <p>Плашка с информацией</p>
+                    <p>{salary.sum}Р на руки</p>
+                    <p>{salary.tax}Р НДФЛ, 13% от оклада </p>
+                    <p>{salary.sumWithTax}Р за сотрудника в месяц</p>
+                </div>
+            }
         </div>
       </form>  
 

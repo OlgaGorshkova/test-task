@@ -5,13 +5,16 @@ export interface DictionaryItem {
 
 export interface Salary{
     type: number;    
-    value: number;
+    sum: number;
     withTax: boolean;
-    tax?: number;   
+    tax?: number;
+    sumWithTax?: number;   
 }
 
-export interface IStateProps extends Salary{
-    onInputChange?: (value: number) => void;
-    onRadioChange?: (value: any) => void;
+export interface IStateProps {
+    salary: Salary;
+    sumInput: number;
+    onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onRadioChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onSwitcherChange?: (value: any) => void;
 }
