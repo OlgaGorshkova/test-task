@@ -8,7 +8,8 @@ export const Calculator = () => {
     const defaultSalary: Salary = {
         type: 1,    
         sum: 0,
-        withTax: true,       
+        withTax: 0, 
+        switch: 'on',
     }
 
     const [salary, setSalary] = useState(defaultSalary);
@@ -18,12 +19,20 @@ export const Calculator = () => {
         const newSalary = {...salary};
         newSalary.type = +e.target.value;
         setSalary(newSalary);
+        console.log(e.target.value);
     };
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {        
         const newSumInput = +e.target.value;
         setSumInput(newSumInput);        
-    }; 
+    };
+    
+    const onSwitcherChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newSalary = {...salary};
+        newSalary.withTax = newSalary.withTax ? 0 : 1;  
+        setSalary(newSalary);
+    };
+
 
     const newSalary = {...salary};    
     
@@ -46,6 +55,7 @@ export const Calculator = () => {
         sumInput: sumInput,       
         onRadioChange: onRadioChange,
         onInputChange: onInputChange,
+        onSwitcherChange: onSwitcherChange,
     }
 
     return View(props);

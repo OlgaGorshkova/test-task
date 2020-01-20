@@ -11,8 +11,8 @@ export const types: DictionaryItem[] = [
 ];
 
 export const View = (props: IStateProps) => {
-    const { onRadioChange, onInputChange, salary, sumInput} = props; 
-    
+    const { onRadioChange, onInputChange, onSwitcherChange, salary, sumInput} = props;     
+
     return(        
       <form>
         <div className="form-group">
@@ -28,23 +28,34 @@ export const View = (props: IStateProps) => {
                             checked={item.id === salary.type} />
                         <label className="form-check-label">{item.name}</label>
                     </div>
-                )) }
-                <div className="form-group sum-group">
-                    <p> switcher {salary.withTax ? 'on': 'off'} </p>
+                )) }                                  
+               
+                <div className="form-check-inline sum-group">
+                    <label> Указать с НДФЛ </label>
+                    <label className="switch">
+                        <input
+                            type="checkbox"
+                            value={salary.withTax} 
+                            checked={salary.withTax === 0}
+                            onChange = {onSwitcherChange}/>
+                        <span className="slider round"></span>
+                    </label>
+                    <label> Без НДФЛ </label>                   
+                </div>
+                            
+                <div className="form-group sum-group">  
                     <input
-                        className="form-contol"
+                        className="form-contol custom-input"
                         type="text"
                         placeholder="Введите сумму"
                         value={sumInput}
                         onChange={onInputChange}
-                    />
-                    <p> сумма input {salary.sum}</p>
+                    />                    
                 </div>               
             </div>
             { 
                 (salary.type === 1) &&
-                <div className="form-group info-group" >
-                    <p>Плашка с информацией</p>
+                <div className="form-group info-group" >                   
                     <p>{salary.sum}Р на руки</p>
                     <p>{salary.tax}Р НДФЛ, 13% от оклада </p>
                     <p>{salary.sumWithTax}Р за сотрудника в месяц</p>

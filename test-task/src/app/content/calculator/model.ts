@@ -6,9 +6,10 @@ export interface DictionaryItem {
 export interface Salary{
     type: number;    
     sum: number;
-    withTax: boolean;
+    withTax: number;
     tax?: number;
-    sumWithTax?: number;   
+    sumWithTax?: number;
+    switch: string;   
 }
 
 export interface IStateProps {
