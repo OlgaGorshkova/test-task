@@ -1,6 +1,13 @@
+@font-face {
+  font-family: 'Hattori-Hanzo';
+  src: url('./fonts/Hattori-Hanzo/Hattori_Hanzo.otf');
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Hattori-Hanzo', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;

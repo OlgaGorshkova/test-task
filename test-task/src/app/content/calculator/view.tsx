@@ -15,9 +15,9 @@ export const View = (props: IStateProps) => {
 
     return(        
       <form>
-        <div className="form-group">
-            <label>Сумма</label>
-            <div className="form-group radio-group">
+        <div className="form-group calculator">
+            <label className="label-grey">Сумма</label>
+            <div className="form-group radio-group bold">
                 {types.map((item, index) => (
                     <div key={index} className="form-check">
                         <input 
@@ -31,7 +31,7 @@ export const View = (props: IStateProps) => {
                 )) }                                  
                
                 <div className="form-check-inline sum-group">
-                    <label> Указать с НДФЛ </label>
+                    <label className="label-grey"> Указать с НДФЛ </label>
                     <label className="switch">
                         <input
                             type="checkbox"
@@ -40,25 +40,26 @@ export const View = (props: IStateProps) => {
                             onChange = {onSwitcherChange}/>
                         <span className="slider round"></span>
                     </label>
-                    <label> Без НДФЛ </label>                   
+                    <label className="label-grey"> Без НДФЛ </label>                   
                 </div>
                             
-                <div className="form-group sum-group">  
+                <div className="form-group-inline sum-group">  
                     <input
-                        className="form-contol custom-input"
+                        className="form-contol custom-input number"
                         type="text"
                         placeholder="Введите сумму"
                         value={sumInput}
                         onChange={onInputChange}
-                    />                    
+                    />
+                    <i className="fa fa-rub currency"></i>                                  
                 </div>               
             </div>
             { 
                 (salary.type === 1) &&
-                <div className="form-group info-group" >                   
-                    <p>{salary.sum}Р на руки</p>
-                    <p>{salary.tax}Р НДФЛ, 13% от оклада </p>
-                    <p>{salary.sumWithTax}Р за сотрудника в месяц</p>
+                <div className="form-group info-group" >
+                    <p><span className="number">{salary.sum}<i className="fa fa-rub currency"></i> </span> на руки</p>
+                    <p><span className="number">{salary.tax}<i className="fa fa-rub currency"></i> </span> НДФЛ, 13% от оклада </p>
+                    <p><span className="number">{salary.sumWithTax}<i className="fa fa-rub currency"></i>  </span> за сотрудника в месяц</p>                    
                 </div>
             }
         </div>
