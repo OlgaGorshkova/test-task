@@ -18,13 +18,14 @@ export const Calculator = () => {
     const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newSalary = {...salary};
         newSalary.type = +e.target.value;
-        setSalary(newSalary);
-        console.log(e.target.value);
+        setSalary(newSalary);       
     };
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {        
         const newSumInput = +e.target.value;
-        setSumInput(newSumInput);        
+        setSumInput(newSumInput);  
+        const num = newSumInput;
+        console.log('number', num.toLocaleString('ru-RU', {style:'currency', currency: 'RUB'}));
     };
     
     const onSwitcherChange = (e: React.ChangeEvent<HTMLInputElement>) => {
