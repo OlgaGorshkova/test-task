@@ -30,8 +30,7 @@ export const View = (props: IStateProps) => {
                         {
                             (item.id === 2) && 
                             <span className="info-icon tooltip">
-                                i
-                                <span className="triangle"></span>
+                                i                                
                                 <span className="tooltiptext">МРОТ - минимальный размер оплаты труда. Разный для разных регионов.</span>                          
                             </span>                           
                         }                        

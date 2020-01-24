@@ -56,20 +56,23 @@
         content: "";
         width: 0; 
         height: 0; 
-        border-bottom: 20px solid #5E6CAB;
-        border-right: 20px solid transparent;       
+        border-bottom: 16px solid #5E6CAB;
+        border-right: 16px solid transparent;       
         display: inline-block;
-        position: relative;
-        bottom: 2rem;
-        right: 1rem;
+        position: absolute;
+        bottom: 100%;
+        left: 0;
       }
       visibility: hidden;
-      width: 220px;
+      width: 200px;
       background-color: #5E6CAB;
       color: #fff;
-      text-align: left;      
-      padding: 1rem;
-  
+      text-align: left;     
+      padding: 1rem; 
+      font-family: 'Custom-font', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+
       /* Position the tooltip */
       position: absolute;
       margin-top: 2rem;      
