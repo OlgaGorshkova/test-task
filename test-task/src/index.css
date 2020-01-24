@@ -1,13 +1,20 @@
 @font-face {
-  font-family: 'Hattori-Hanzo';
-  src: url('./fonts/Hattori-Hanzo/Hattori_Hanzo.otf');
+  font-family: 'Custom-font';
+  src: url('./fonts/CustomFont/FTN45B24__W.ttf') format('opentype');
+  src: url('./fonts/CustomFont/FTN45B24__W.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Custom-font-bold';
+  src: url('./fonts/CustomFont/FTN65B24__W.ttf') format('opentype');
+  src: url('./fonts/CustomFont/FTN65B24__W.woff') format('woff');
 }
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Hattori-Hanzo', 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Custom-font', 'Custom-font-bold', 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;

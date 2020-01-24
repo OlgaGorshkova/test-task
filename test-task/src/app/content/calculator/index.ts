@@ -10,10 +10,12 @@ export const Calculator = () => {
         sum: 0,
         withTax: 0, 
         switch: 'on',
+        tax: 0,
+        sumWithTax: 0
     }
 
     const [salary, setSalary] = useState(defaultSalary);
-    const [sumInput, setSumInput] = useState(0);
+    const [sumInput, setSumInput] = useState(0);   
 
     const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newSalary = {...salary};
@@ -21,11 +23,17 @@ export const Calculator = () => {
         setSalary(newSalary);       
     };
 
-    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {        
-        const newSumInput = +e.target.value;
-        setSumInput(newSumInput);  
-        const num = newSumInput;
-        console.log('number', num.toLocaleString('ru-RU', {style:'currency', currency: 'RUB'}));
+    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {       
+        const newSumInputStr = e.target.value;
+        console.log('newSumInputStr', newSumInputStr);
+
+        const newSumInput1 = newSumInputStr.replace(/&nbsp;/g,'').replace(/\s/g,'');
+        console.log('newSumInput1', newSumInput1);
+
+        const newSumInput = +newSumInput1;
+        console.log('newSumInput', newSumInput);
+
+        setSumInput(newSumInput); 
     };
     
     const onSwitcherChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +45,7 @@ export const Calculator = () => {
 
     const newSalary = {...salary};    
     
-    if (newSalary.type === 1) {
+    if (newSalary.type === 1 && sumInput > 0) {
         if (newSalary.withTax) {
             newSalary.sumWithTax = sumInput;
             newSalary.tax = Math.round(sumInput * 0.13);
@@ -48,8 +56,10 @@ export const Calculator = () => {
             newSalary.sumWithTax = newSalary.sum + newSalary.tax;
         }
     } else {
-        newSalary.sum = sumInput;
+        newSalary.sum = sumInput ? sumInput : 0;
     } 
+
+    console.log('sumInput', sumInput);
     
     const props: IStateProps = {
         salary: newSalary, 

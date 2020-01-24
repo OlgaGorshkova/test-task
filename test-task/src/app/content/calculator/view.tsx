@@ -48,18 +48,30 @@ export const View = (props: IStateProps) => {
                         className="form-contol custom-input number"
                         type="text"
                         placeholder="Введите сумму"
-                        value={sumInput}
+                        value={sumInput.toLocaleString('ru-RU')}                        
                         onChange={onInputChange}
-                    />
-                    <i className="fa fa-rub currency"></i>                                  
+                    />                   
+                    <span> &#8381;</span>
                 </div>               
             </div>
             { 
                 (salary.type === 1) &&
                 <div className="form-group info-group" >
-                    <p><span className="number">{salary.sum}<i className="fa fa-rub currency"></i> </span> на руки</p>
-                    <p><span className="number">{salary.tax}<i className="fa fa-rub currency"></i> </span> НДФЛ, 13% от оклада </p>
-                    <p><span className="number">{salary.sumWithTax}<i className="fa fa-rub currency"></i>  </span> за сотрудника в месяц</p>                    
+                    <p>
+                        <span className="bold">
+                            {salary.sum && salary.sum.toLocaleString('ru-RU', {style:'currency', currency: 'RUB'}).replace(',00', '')}
+                        </span> на руки
+                    </p>
+                    <p>
+                        <span className="bold">
+                            {salary.tax && salary.tax.toLocaleString('ru-RU', {style:'currency', currency: 'RUB'}).replace(',00', '')}
+                        </span> НДФЛ, 13% от оклада
+                    </p>
+                    <p>
+                        <span className="bold">
+                            {salary.sumWithTax && salary.sumWithTax.toLocaleString('ru-RU', {style:'currency', currency: 'RUB'}).replace(',00', '')}
+                        </span> за сотрудника в месяц
+                    </p>                    
                 </div>
             }
         </div>
