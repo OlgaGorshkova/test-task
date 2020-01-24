@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 
 import { View } from './view';
 import { IStateProps, Salary } from './model';
@@ -25,14 +25,8 @@ export const Calculator = () => {
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {       
         const newSumInputStr = e.target.value;
-        console.log('newSumInputStr', newSumInputStr);
-
-        const newSumInput1 = newSumInputStr.replace(/&nbsp;/g,'').replace(/\s/g,'');
-        console.log('newSumInput1', newSumInput1);
-
-        const newSumInput = +newSumInput1;
-        console.log('newSumInput', newSumInput);
-
+        const newSumInput1 = newSumInputStr.replace(/&nbsp;/g,'').replace(/\s/g,''); 
+        const newSumInput = +newSumInput1;    
         setSumInput(newSumInput); 
     };
     
@@ -58,8 +52,6 @@ export const Calculator = () => {
     } else {
         newSalary.sum = sumInput ? sumInput : 0;
     } 
-
-    console.log('sumInput', sumInput);
     
     const props: IStateProps = {
         salary: newSalary, 

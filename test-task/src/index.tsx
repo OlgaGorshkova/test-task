@@ -1,3 +1,4 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React from 'react';
@@ -6,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import { App } from './app';
 import * as serviceWorker from './serviceWorker';
-import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

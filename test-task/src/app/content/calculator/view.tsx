@@ -23,12 +23,20 @@ export const View = (props: IStateProps) => {
                         <input 
                             className="form-check-input" 
                             type="radio" 
-                            value={item.id}                        
+                            value={item.id}                                               
                             onChange = {onRadioChange}
                             checked={item.id === salary.type} />
-                        <label className="form-check-label">{item.name}</label>
+                        <label className="form-check-label">{item.name} </label>
+                        {
+                            (item.id === 2) && 
+                            <span className="info-icon tooltip">
+                                i
+                                <span className="triangle"></span>
+                                <span className="tooltiptext">МРОТ - минимальный размер оплаты труда. Разный для разных регионов.</span>                          
+                            </span>                           
+                        }                        
                     </div>
-                )) }                                  
+                )) }            
                
                 <div className="form-check-inline sum-group">
                     <label className="label-grey"> Указать с НДФЛ </label>
