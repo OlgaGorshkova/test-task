@@ -3,8 +3,17 @@
     font-size: 1rem;
     font-weight: 400;
     font-family: 'Custom-font', sans-serif;
+    color: #212529;
 
     .bold {
         font-family: 'Custom-font-bold', sans-serif;
+    }
+
+    .primary {
+        color: #212529;
+    }
+
+    .secondary {
+        color: #BABABA;
     }
 }

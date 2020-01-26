@@ -14,8 +14,10 @@ export interface Salary{
 
 export interface IStateProps {
     salary: Salary;
-    sumInput: number;   
+    sumInput: number;
+    fixInfo: boolean;    
     onInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onRadioChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onSwitcherChange?: (value: any) => void;
+    onSwitcherChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onInfoClick?: () => void;
 }

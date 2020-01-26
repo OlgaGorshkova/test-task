@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import { IStateProps, DictionaryItem } from './model'
 
 import './style.scss';
@@ -11,13 +12,13 @@ export const types: DictionaryItem[] = [
 ];
 
 export const View = (props: IStateProps) => {
-    const { onRadioChange, onInputChange, onSwitcherChange, salary, sumInput} = props;     
+    const { onRadioChange, onInputChange, onSwitcherChange, onInfoClick, salary, sumInput, fixInfo } = props;
 
     return(        
       <form>
         <div className="form-group calculator">
-            <label className="label-grey">Сумма</label>
-            <div className="form-group radio-group bold">
+            <label className="calc-label secondary">Сумма</label>
+            <div className="form-group ml-3 bold"> 
                 {types.map((item, index) => (
                     <div key={index} className="form-check">
                         <input 
@@ -29,16 +30,18 @@ export const View = (props: IStateProps) => {
                         <label className="form-check-label">{item.name} </label>
                         {
                             (item.id === 2) && 
-                            <span className="info-icon tooltip">
-                                i                                
-                                <span className="tooltiptext">МРОТ - минимальный размер оплаты труда. Разный для разных регионов.</span>                          
-                            </span>                           
+                            <div className='info-icon tooltip' onClick={onInfoClick}>
+                                {fixInfo ? 'X' : 'i' }                             
+                                <span className={`tooltiptext ${fixInfo ? 'info-fixed' : ''}`} >
+                                    МРОТ - минимальный размер оплаты труда. Разный для разных регионов.
+                                </span>                          
+                            </div>                           
                         }                        
                     </div>
                 )) }            
                
-                <div className="form-check-inline sum-group">
-                    <label className="label-grey"> Указать с НДФЛ </label>
+                <div className="form-check-inline ml-3">
+                    <label className={`calc-label ${salary.withTax ? 'primary' : 'secondary'}`}> Указать с НДФЛ </label>
                     <label className="switch">
                         <input
                             type="checkbox"
@@ -47,10 +50,10 @@ export const View = (props: IStateProps) => {
                             onChange = {onSwitcherChange}/>
                         <span className="slider round"></span>
                     </label>
-                    <label className="label-grey"> Без НДФЛ </label>                   
+                    <label className={`calc-label ${salary.withTax ? 'secondary': 'primary'}`}> Без НДФЛ </label>                   
                 </div>
                             
-                <div className="form-group-inline sum-group">  
+                <div className="form-group-inline ml-3">  
                     <input
                         className="form-contol custom-input number"
                         type="text"

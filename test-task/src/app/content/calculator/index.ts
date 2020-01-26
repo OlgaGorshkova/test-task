@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { View } from './view';
 import { IStateProps, Salary } from './model';
 
-export const Calculator = () => {  
+export const Calculator = () => {    
 
     const defaultSalary: Salary = {
         type: 1,    
@@ -15,7 +15,8 @@ export const Calculator = () => {
     }
 
     const [salary, setSalary] = useState(defaultSalary);
-    const [sumInput, setSumInput] = useState(0);   
+    const [sumInput, setSumInput] = useState(0); 
+    const [fixInfo, setFixInfo] = useState(false);  
 
     const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newSalary = {...salary};
@@ -36,6 +37,9 @@ export const Calculator = () => {
         setSalary(newSalary);
     };
 
+    const onInfoClick = () => {        
+        setFixInfo(!fixInfo);        
+    }
 
     const newSalary = {...salary};    
     
@@ -55,10 +59,12 @@ export const Calculator = () => {
     
     const props: IStateProps = {
         salary: newSalary, 
-        sumInput: sumInput,       
+        sumInput: sumInput,
+        fixInfo: fixInfo,
         onRadioChange: onRadioChange,
         onInputChange: onInputChange,
         onSwitcherChange: onSwitcherChange,
+        onInfoClick: onInfoClick,      
     }
 
     return View(props);
