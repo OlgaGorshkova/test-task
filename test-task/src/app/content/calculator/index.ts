@@ -8,8 +8,7 @@ export const Calculator = () => {
     const defaultSalary: Salary = {
         type: 1,    
         sum: 0,
-        withTax: 0, 
-        switch: 'on',
+        withTax: 0,        
         tax: 0,
         sumWithTax: 0
     }

@@ -8,8 +8,7 @@ export interface Salary{
     sum: number;
     withTax: number;
     tax?: number;
-    sumWithTax?: number;
-    switch: string;   
+    sumWithTax?: number;       
 }
 
 export interface IStateProps {
