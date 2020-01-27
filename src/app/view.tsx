@@ -6,7 +6,7 @@ export class View extends React.Component {
 
     render() {
         return (
-            <div className = 'container app primary-color'>
+            <div className = 'container app primary'>
                 <div className='row'>
                     <div className='col-sm-4'>
                         <Calculator />

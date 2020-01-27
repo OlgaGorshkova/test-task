@@ -21,16 +21,17 @@ export const View = (props: IStateProps) => {
                 {types.map((item, index) => (
                     <div key={index} className='form-check'>
                         <input
+                            id={'radio' + index}
                             className='form-check-input'
                             type='radio'
                             value={item.id}
                             onChange = {onRadioChange}
                             checked={item.id === salary.type} />
-                        <label className='form-check-label'>{item.name} </label>
+                        <label className='form-check-label' htmlFor={'radio' + index}>{item.name} </label>
                         {
                             (item.id === 2) &&
                             <div className='info-icon tooltip' onClick={onInfoClick}>
-                                {fixInfo ? 'X' : 'i' }
+                                    {fixInfo ? 'X' : 'i' }
                                 <span className={`tooltiptext ${fixInfo ? 'info-fixed' : ''}`} >
                                     МРОТ - минимальный размер оплаты труда. Разный для разных регионов.
                                 </span>
@@ -59,6 +60,14 @@ export const View = (props: IStateProps) => {
                         onChange={onInputChange}
                     />
                     <span> &#8381;</span>
+                    {
+                        (salary.type === 3) &&
+                        <span> в день</span>
+                    }
+                    {
+                        (salary.type === 4) &&
+                        <span> в час</span>
+                    }
                 </div>
             </div>
             {

@@ -26,8 +26,10 @@ export const Calculator = () => {
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newSumInputStr = e.target.value;
         const newSumInput1 = newSumInputStr.replace(/&nbsp;/g, '').replace(/\s/g, '');
-        const newSumInput = +newSumInput1;
-        setSumInput(newSumInput);
+        const newSumInput =  +newSumInput1;
+        if (!isNaN(newSumInput)) {
+            setSumInput(newSumInput);
+        }
     };
 
     const onSwitcherChange = (e: React.ChangeEvent<HTMLInputElement>) => {
