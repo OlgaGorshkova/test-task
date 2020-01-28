@@ -63,7 +63,7 @@
 		font-size: 0.7rem;
 		font-weight: 600;
 		color: #BABABA;
-		margin-left: 0.5rem;
+		margin-left: 9px;
 	}  
 
 	.tooltip {
@@ -74,9 +74,9 @@
 		}
 		position: relative;
 		display: inline-block;
-		opacity: 100;  
-	
-		.tooltiptext {
+		opacity: 100;  		
+	}	
+	.tooltip + .tooltiptext {
 		&:before {
 			content: "";
 			width: 0; 
@@ -100,18 +100,19 @@
 
 		/* Position the tooltip */
 		position: absolute;
-		margin-top: 2.5rem; 		
+		top: 46px;
+		left: 85px; 		
 		z-index: 1;
-		}
+	}
 	
-		&:hover .tooltiptext {
+	.tooltip:hover + .tooltiptext {
 		visibility: visible;
-		}
+	}
 
-		.info-fixed {      
+	.tooltip + .info-fixed {      
 		visibility: visible;      
-		}
-	}	
+	}
+	
 
 	// switcher
 	.switch {

@@ -30,11 +30,13 @@ export const View = (props: IStateProps) => {
                         <label className='custom-control-label' htmlFor={'radio' + index}>{item.name} </label>
                         {
                             (item.id === 2) &&
-                            <div className='info-icon tooltip' onClick={onInfoClick}>
+                            <div className='d-inline-block'>
+                                <div className='info-icon tooltip' onClick={onInfoClick}>
                                     {fixInfo ? 'X' : 'i' }
-                                <span className={`tooltiptext ${fixInfo ? 'info-fixed' : ''}`} >
+                                </div>
+                                <div className={`tooltiptext ${fixInfo ? 'info-fixed' : ''}`} onClick={() => {console.log('hi'); }}>
                                     МРОТ - минимальный размер оплаты труда. Разный для разных регионов.
-                                </span>
+                                </div>
                             </div>
                         }
                     </div>
@@ -85,7 +87,8 @@ export const View = (props: IStateProps) => {
                     </p>
                     <p>
                         <span className='bold'>
-                            {salary.sumWithTax && salary.sumWithTax.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}).replace(',00', '')}
+                            {salary.sumWithTax
+                                && salary.sumWithTax.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}).replace(',00', '')}
                         </span> за сотрудника в месяц
                     </p>
                 </div>
