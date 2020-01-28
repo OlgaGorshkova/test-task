@@ -19,15 +19,15 @@ export const View = (props: IStateProps) => {
             <label className='calc-label secondary'>Сумма</label>
             <div className='form-group ml-3 bold'>
                 {types.map((item, index) => (
-                    <div key={index} className='form-check'>
+                    <div key={index} className='custom-control custom-radio'>
                         <input
                             id={'radio' + index}
-                            className='form-check-input'
+                            className='custom-control-input'
                             type='radio'
                             value={item.id}
                             onChange = {onRadioChange}
                             checked={item.id === salary.type} />
-                        <label className='form-check-label' htmlFor={'radio' + index}>{item.name} </label>
+                        <label className='custom-control-label' htmlFor={'radio' + index}>{item.name} </label>
                         {
                             (item.id === 2) &&
                             <div className='info-icon tooltip' onClick={onInfoClick}>

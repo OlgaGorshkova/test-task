@@ -1,4 +1,33 @@
 .calculator { 
+	.custom-control-label{
+		&:before {
+		position: absolute;
+    	top: 4px;
+		left: -26px;
+		}
+	}
+
+	.custom-radio .custom-control-input:checked~.custom-control-label::before {	
+		background-color: white;		
+		border: #BABABA solid 1px;
+		box-shadow: none;
+		width: 16px;
+		height: 16px;
+	}
+
+	.custom-radio .custom-control-input:checked~.custom-control-label::after {
+		position: absolute;
+		top: 7px;
+		left: -23px;
+		display: block;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		content: "";
+		background: no-repeat 50% / 50% 50%;
+		background-color: #212529;
+	}
+
 	.info-group {
 		background-color: #FBF4DA;
 		padding: 1rem 2rem 1rem 2rem;
