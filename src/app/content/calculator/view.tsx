@@ -34,7 +34,7 @@ export const View = (props: IStateProps) => {
                                 <div className='info-icon tooltip' onClick={onInfoClick}>
                                     {fixInfo ? 'X' : 'i' }
                                 </div>
-                                <div className={`tooltiptext ${fixInfo ? 'info-fixed' : ''}`} onClick={() => {console.log('hi'); }}>
+                                <div className={`tooltiptext ${fixInfo ? 'info-fixed' : ''}`} >
                                     МРОТ - минимальный размер оплаты труда. Разный для разных регионов.
                                 </div>
                             </div>
