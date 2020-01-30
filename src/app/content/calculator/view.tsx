@@ -78,7 +78,7 @@ export const View = (props: IStateProps) => {
                     <p>
                         <span className='bold'>
                             {salary.sum && salary.sum.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}).replace(',00', '')}
-                        </span> на руки
+                        </span> сотрудник будет получать на руки
                     </p>
                     <p>
                         <span className='bold'>
