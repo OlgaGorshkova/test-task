@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Calculator} from './content/calculator';
+import {CalculatorNew} from './content/calculatorNew';
 import './style.scss';
 
 export class View extends React.Component {
@@ -9,7 +9,7 @@ export class View extends React.Component {
             <div className = 'container app primary'>
                 <div className='row'>
                     <div className='col-sm-4'>
-                        <Calculator />
+                        <CalculatorNew />
                     </div>
                 </div>
             </div>
