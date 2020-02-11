@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { IStateProps, DictionaryItem } from './model';
+import { DictionaryItem, IStateProps } from './model';
+import { Field } from 'redux-form';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
+import FormLabel from '@material-ui/core/FormLabel';
 
 import './style.scss';
 
@@ -10,89 +16,32 @@ export const types: DictionaryItem[] = [
     {id: 4, name: 'Оплата за час'},
 ];
 
-export const View = (props: IStateProps) => {
-    const { onRadioChange, onInputChange, onSwitcherChange, onInfoClick, salary, sumInput, fixInfo } = props;
+export const View = (props: IStateProps ) => {
+
+    const {salary} = props;
+
+    const radioButton = ({ input, ...rest }: {input: number} ) => (
+        <FormControl>
+            <FormLabel component='legend'>Сумма</FormLabel>
+            <RadioGroup {...input} {...rest}>{
+                types.map((item, index) => (
+                    <FormControlLabel key={index}
+                        value={item.id}
+                        control={<Radio />}
+                        label={item.name}
+                        // onChange = {onRadioChange}
+                        checked={item.id === salary.type}
+                    />
+                ))
+            }
+            </RadioGroup>
+        </FormControl>
+    );
 
     return(
-      <form>
-        <div className='form-group calculator'>
-            <label className='calc-label secondary'>Сумма</label>
-            <div className='form-group ml-3 bold'>
-                {types.map((item, index) => (
-                    <div key={index} className='custom-control custom-radio'>
-                        <input
-                            id={'radio' + index}
-                            className='custom-control-input'
-                            type='radio'
-                            value={item.id}
-                            onChange = {onRadioChange}
-                            checked={item.id === salary.type} />
-                        <label className='custom-control-label' htmlFor={'radio' + index}>{item.name} </label>
-                        {
-                            (item.id === 2) &&
-                            <div className='d-inline-block'>
-                                <div className='info-icon tooltip' onClick={onInfoClick}>
-                                    {fixInfo ? 'X' : 'i' }
-                                </div>
-                                <div className={`tooltiptext ${fixInfo ? 'info-fixed' : ''}`} >
-                                    МРОТ - минимальный размер оплаты труда. Разный для разных регионов.
-                                </div>
-                            </div>
-                        }
-                    </div>
-                )) }
-                <div className='form-check-inline ml-3'>
-                    <label className={`calc-label ${salary.withTax ? 'primary' : 'secondary'}`}> Указать с НДФЛ </label>
-                    <label className='switch'>
-                        <input
-                            type='checkbox'
-                            value={salary.withTax}
-                            checked={salary.withTax === 0}
-                            onChange = {onSwitcherChange}/>
-                        <span className='slider round'></span>
-                    </label>
-                    <label className={`calc-label ${salary.withTax ? 'secondary' : 'primary'}`}> Без НДФЛ </label>
-                </div>
-                <div className='form-group-inline ml-3'>
-                    <input
-                        className='form-contol custom-input number'
-                        type='text'
-                        placeholder='Введите сумму'
-                        value={sumInput.toLocaleString('ru-RU')}
-                        onChange={onInputChange}
-                    />
-                    <span> &#8381;</span>
-                    {
-                        (salary.type === 3) &&
-                        <span> в день</span>
-                    }
-                    {
-                        (salary.type === 4) &&
-                        <span> в час</span>
-                    }
-                </div>
-            </div>
-            {
-                (salary.type === 1) &&
-                <div className='form-group info-group'>
-                    <p>
-                        <span className='bold'>
-                            {salary.sum && salary.sum.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}).replace(',00', '')}
-                        </span> сотрудник будет получать на руки
-                    </p>
-                    <p>
-                        <span className='bold'>
-                            {salary.tax && salary.tax.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}).replace(',00', '')}
-                        </span> НДФЛ, 13% от оклада
-                    </p>
-                    <p>
-                        <span className='bold'>
-                            {salary.sumWithTax
-                                && salary.sumWithTax.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}).replace(',00', '')}
-                        </span> за сотрудника в месяц
-                    </p>
-                </div>
-            }
+      <form >
+        <div>
+            <Field name='salary.type' component={radioButton} />
         </div>
       </form>
     );
