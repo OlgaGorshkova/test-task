@@ -11,15 +11,18 @@ const Form = reduxForm<any, any>({
 
 export const CalculatorNew = () => {
 
-    const salary = useSelector<StorageState, Salary>(state => ({
-        type: +state.form?.calcuatorForm?.values?.salary.type
+    const stateModel = useSelector<StorageState, Salary>(state => ({
+        type: state.form?.calcuatorForm?.values?.salary.type
     }), shallowEqual);
 
-    console.log('salary', salary);
+    const salary = {
+        type: stateModel.type ? +stateModel.type : 1,
+    };
 
+    console.log('salary', stateModel);
 
     const props: IStateProps = {
-        salary: {...salary},
+        salary: salary,
     };
 
     return createElement(Form, props);
