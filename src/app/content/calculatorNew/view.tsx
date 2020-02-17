@@ -12,11 +12,11 @@ import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 
-import { RadioButton } from './index';
-import { TablePaginationActions } from '../../components/TablePaginationActions';
+import { CustomRadioGroup } from '../../components/customRadioGroup';
+import { TablePaginationActions } from '../../components/tablePaginationActions';
 
 export const View = (props: IStateProps ) => {
-    const {salary, classes, data, rowsPerPage, page, handleChangePage, handleChangeRowsPerPage } = props;
+    const {salary, types, classes, data, rowsPerPage, page, handleChangePage, handleChangeRowsPerPage } = props;
 
     return(
         <Container>
@@ -25,9 +25,10 @@ export const View = (props: IStateProps ) => {
                     <FormLabel component='legend' className={classes.formLabel}>Сумма</FormLabel>
                     <Field
                         name='salary.type'
-                        component={RadioButton}
+                        component={CustomRadioGroup}
                         currValue={salary.type}
                         className={classes.group}
+                        values={types}
                     />
                 </FormControl>
             </form>

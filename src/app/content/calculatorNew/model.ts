@@ -1,7 +1,4 @@
-export interface DictionaryItem {
-    id: number;
-    name: string;
-}
+import { DictionaryItem } from '../../components/customRadioGroup/model';
 
 export interface Salary {
     type: number;
@@ -29,6 +26,7 @@ export interface ITablePaginationActions {
 
 export interface IStateProps {
     salary: Salary;
+    types: DictionaryItem[];
     classes: Record<'root' | 'table' | 'formControl' | 'formLabel' | 'group', string>;
     data: MyData;
     rowsPerPage: number;
