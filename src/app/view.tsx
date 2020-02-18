@@ -8,7 +8,7 @@ export class View extends React.Component {
         return (
             <div className = 'container app primary'>
                 <div className='row'>
-                    <div className='col-sm-4'>
+                    <div className='col-sm-6'>
                         <CalculatorNew />
                     </div>
                 </div>

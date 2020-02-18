@@ -13,6 +13,7 @@ import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 
 import { CustomRadioGroup } from '../../components/customRadioGroup';
+import { CustomSwitch } from '../../components/customSwitch';
 import { TablePaginationActions } from '../../components/tablePaginationActions';
 
 export const View = (props: IStateProps ) => {
@@ -24,11 +25,23 @@ export const View = (props: IStateProps ) => {
                 <FormControl component='fieldset' className={classes.formControl}>
                     <FormLabel component='legend' className={classes.formLabel}>Сумма</FormLabel>
                     <Field
-                        name='salary.type'
+                        name='type'
                         component={CustomRadioGroup}
                         currValue={salary.type}
                         className={classes.group}
                         values={types}
+                    />
+                    <Field
+                        name='withTax'
+                        component={CustomSwitch}
+                        labelLeft='Указать с НДФЛ'
+                        labelRight='Без НДФЛ'
+                    />
+                    <Field
+                        name='sumInput'
+                        component='input'
+                        type='text'
+                        placeholder='Введите сумму'
                     />
                 </FormControl>
             </form>

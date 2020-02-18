@@ -23,6 +23,11 @@ export interface ITablePaginationActions {
     onChangePage: (event: React.MouseEvent<HTMLButtonElement>, newPage: number) => void;
 }
 
+export interface IFormModel {
+    type: number;
+    withTax: number;
+    sumInput?: number;
+}
 
 export interface IStateProps {
     salary: Salary;

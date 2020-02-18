@@ -7,7 +7,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 
 import { StorageState } from '../../redux/reducers';
-import { Salary, IStateProps, MyData } from './model';
+import { IStateProps, IFormModel, MyData, Salary } from './model';
 import { DictionaryItem } from '../../components/customRadioGroup/model';
 import { View } from './view';
 
@@ -72,9 +72,15 @@ export const CalculatorNew = () => {
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [page, setPage] = useState(0);
 
-    const stateModel = useSelector<StorageState, Salary>(state => ({
-        type: state.form?.calcuatorForm?.values?.salary.type
-    }), shallowEqual);
+    const stateModel = useSelector<StorageState, IFormModel>(state => {
+        // const formData = getFormValues('calcuatorForm')(state);
+        // console.log('formData', formData);
+        return {
+            type: state?.form?.calcuatorForm?.values?.type,
+            sumInput: state?.form?.calcuatorForm?.values?.sumInput,
+            withTax: state?.form?.calcuatorForm?.values?.withTax,
+        };
+    }, shallowEqual);
 
     const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
         setPage(newPage);
@@ -85,7 +91,7 @@ export const CalculatorNew = () => {
         setPage(0);
     };
 
-    const salary = {
+    const salary: Salary = {
         type: stateModel.type ? +stateModel.type : 1,
     };
 
