@@ -4,20 +4,23 @@ import { Field } from 'redux-form';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Container from '@material-ui/core/Container';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
+// import Table from '@material-ui/core/Table';
+// import TableBody from '@material-ui/core/TableBody';
+// import TableCell from '@material-ui/core/TableCell';
+// import TableHead from '@material-ui/core/TableHead';
+// import TableRow from '@material-ui/core/TableRow';
+// import TableFooter from '@material-ui/core/TableFooter';
+// import TablePagination from '@material-ui/core/TablePagination';
 
 import { CustomRadioGroup } from '../../components/customRadioGroup';
 import { CustomSwitch } from '../../components/customSwitch';
-import { TablePaginationActions } from '../../components/tablePaginationActions';
+// import { TablePaginationActions } from '../../components/tablePaginationActions';
+
+import '../calculator/style.scss';
 
 export const View = (props: IStateProps ) => {
-    const {salary, types, classes, data, rowsPerPage, page, handleChangePage, handleChangeRowsPerPage } = props;
+    const {salary, types, classes, } = props;
+    //  data, rowsPerPage, page, handleChangePage, handleChangeRowsPerPage
 
     return(
         <Container>
@@ -32,20 +35,52 @@ export const View = (props: IStateProps ) => {
                         values={types}
                     />
                     <Field
-                        name='withTax'
+                        name='withoutTax'
                         component={CustomSwitch}
                         labelLeft='Указать с НДФЛ'
                         labelRight='Без НДФЛ'
                     />
-                    <Field
-                        name='sumInput'
-                        component='input'
-                        type='text'
-                        placeholder='Введите сумму'
-                    />
+                    <div>
+                        <Field
+                            name='sumInput'
+                            component='input'
+                            type='text'
+                            placeholder='Введите сумму'
+                        />
+                        <span> &#8381;</span>
+                        {
+                            (salary.type === 3) &&
+                            <span> в день</span>
+                        }
+                        {
+                            (salary.type === 4) &&
+                            <span> в час</span>
+                        }
+                    </div>
                 </FormControl>
             </form>
-            <Table size='small' aria-label='fetched data' className={classes.table}>
+            {
+                (salary.type === 1) &&
+                <div className={classes.infoGroup}>
+                    <p>
+                        <span className='bold'>
+                            {salary.sum && salary.sum.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}).replace(',00', '')}
+                        </span> сотрудник будет получать на руки
+                    </p>
+                    <p>
+                        <span className='bold'>
+                            {salary.tax && salary.tax.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}).replace(',00', '')}
+                        </span> НДФЛ, 13% от оклада
+                    </p>
+                    <p>
+                        <span className='bold'>
+                            {salary.sumWithTax
+                                && salary.sumWithTax.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'}).replace(',00', '')}
+                        </span> за сотрудника в месяц
+                    </p>
+                </div>
+            }
+            {/* <Table size='small' aria-label='fetched data' className={classes.table}>
                 <TableHead>
                 <TableRow>
                     <TableCell>Name</TableCell>
@@ -81,7 +116,7 @@ export const View = (props: IStateProps ) => {
                         />
                     </TableRow>
                 </TableFooter>
-            </Table>
+            </Table> */}
         </Container>
     );
 };

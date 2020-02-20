@@ -3,7 +3,7 @@ import { DictionaryItem } from '../../components/customRadioGroup/model';
 export interface Salary {
     type: number;
     sum?: number;
-    withTax?: number;
+    withoutTax?: boolean;
     tax?: number;
     sumWithTax?: number;
 }
@@ -25,14 +25,14 @@ export interface ITablePaginationActions {
 
 export interface IFormModel {
     type: number;
-    withTax: number;
+    withoutTax: boolean;
     sumInput?: number;
 }
 
 export interface IStateProps {
     salary: Salary;
     types: DictionaryItem[];
-    classes: Record<'root' | 'table' | 'formControl' | 'formLabel' | 'group', string>;
+    classes: Record<'root' | 'table' | 'formControl' | 'formLabel' | 'group' | 'infoGroup', string>;
     data: MyData;
     rowsPerPage: number;
     page: number;
