@@ -71,12 +71,13 @@ const MySwitch = withStyles((theme: Theme) =>
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
     root: {
-      marginLeft: '10px',
+      marginLeft: '45px',
     },
     label: {
         display: 'flex',
-        fontFamily: 'Custom-font, sans-serif',
+        fontFamily: 'Custom-font-bold, sans-serif',
         color: '#BABABA',
+        fontSize: '0.8rem',
     },
   }),
 );

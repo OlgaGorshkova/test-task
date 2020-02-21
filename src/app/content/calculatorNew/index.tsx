@@ -20,13 +20,17 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
         display: 'flex',
         fontFamily: 'Custom-font, sans-serif',
+        '&  legend.Mui-focused': {
+            color:  '#BABABA',
+        },
     },
     formControl: {
         margin: theme.spacing(2),
     },
     formLabel: {
-        fontFamily: 'Custom-font, sans-serif',
+        fontFamily: 'Custom-font-bold, sans-serif',
         color: '#BABABA',
+        fontSize: '0.8rem',
     },
     group: {
         margin: theme.spacing(0),
@@ -39,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
             '&:checked + div': {
                 color: '#BABABA',
             },
-        }
+        },
     },
     infoGroup: {
         backgroundColor: '#FBF4DA',
@@ -147,7 +151,7 @@ export const CalculatorNew = () => {
             type: 1,
             sumInput: 0,
             withoutTax: true,
-        }
+        };
         dispatch(initialize('calcuatorForm', initialValues));
 
     }, []);

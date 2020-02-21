@@ -2,6 +2,7 @@ import * as React from 'react';
 import {IStateProps } from './model';
 import { Field } from 'redux-form';
 import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Container from '@material-ui/core/Container';
 // import Table from '@material-ui/core/Table';
@@ -14,6 +15,8 @@ import Container from '@material-ui/core/Container';
 
 import { CustomRadioGroup } from '../../components/customRadioGroup';
 import { CustomSwitch } from '../../components/customSwitch';
+import { CustomInput } from '../../components/customInput';
+
 // import { TablePaginationActions } from '../../components/tablePaginationActions';
 
 import '../calculator/style.scss';
@@ -34,18 +37,27 @@ export const View = (props: IStateProps ) => {
                         className={classes.group}
                         values={types}
                     />
+                    {/* <FormControlLabel
+                        value='start'
+                        control={<Field
+                            name='withoutTax'
+                            component={CustomSwitch}
+                            labelLeft='Указать с НДФЛ'
+                            labelRight='Без НДФЛ'
+                        />}
+                        label='Start'
+                        labelPlacement='start' /> */}
                     <Field
-                        name='withoutTax'
-                        component={CustomSwitch}
-                        labelLeft='Указать с НДФЛ'
-                        labelRight='Без НДФЛ'
-                    />
+                         name='withoutTax'
+                         component={CustomSwitch}
+                         labelLeft='Указать с НДФЛ'
+                         labelRight='Без НДФЛ'
+                     />
                     <div>
                         <Field
                             name='sumInput'
-                            component='input'
-                            type='text'
-                            placeholder='Введите сумму'
+                            component={CustomInput}
+                            variant='outlined'
                         />
                         <span> &#8381;</span>
                         {
