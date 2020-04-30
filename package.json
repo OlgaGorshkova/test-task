@@ -23,7 +23,7 @@
     "connected-react-router": "^6.7.0",
     "font-awesome": "4.7.0",
     "history": "^4.10.1",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "node-sass": "4.13.0",
     "popper": "1.0.1",
     "popper.js": "1.16.1",
